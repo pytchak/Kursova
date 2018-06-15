@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    
+    AjaxOptions ajax = new AjaxOptions
+    {
+        UpdateTargetId = "programmersList",
+        Url = Url.Action("GetProgrammers")
+    };
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Programmers</title>
+    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <hr />
+    <div>
+        @using (Ajax.BeginForm(ajax))
+        {
+            <div class="row" id="find">
+                <div class="col-md-3 input-group">
+                    <input type="text" name="filter" value="@ViewBag.filter" class="form-control" placeholder="Введіть імя для пошуку..." />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Найти</button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row" id="programmersTable">
+                <div class="col-md-8">
+                    <table class="table">
+                        <thead>
+                            <tr class="thead-dark">
+                                <td scope="col">Імя</td>
+                                <td scope="col">По Батькові</td>
+                                <td scope="col">Прізвище</td>
+                                <td scope="col">Факультет</td>
+                            </tr>
+                        </thead>
+                        <tbody id="programmersList">
+                            @Html.Action("GetProgrammers")
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

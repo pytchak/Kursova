@@ -1,0 +1,62 @@
+﻿@model Kursova.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Реєстрація";
+}
+
+<h2>@ViewBag.Title.</h2> 
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Створіть новий акаунт.</h4>
+    <hr />
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Пошта</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Імя</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Прізвище</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.SurName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">По-Батькові</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Patronymic, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Факультет</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control" })
+            
+        </div>
+    </div>
+    <div  class="form-group">
+        <div class="col-md-10">
+            
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="Реєстрація" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

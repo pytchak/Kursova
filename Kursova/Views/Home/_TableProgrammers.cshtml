@@ -1,0 +1,14 @@
+﻿@using Kursova.Models
+@model IEnumerable<Professor>
+
+@foreach (Professor professor in Model)
+{
+<tr>
+    
+    <td>@professor.Name</td>
+    <td>@professor.Patronymic</td>
+    <td>@professor.SurName</td>
+    <td>@professor.Faculty</td>
+</tr>
+}
+
